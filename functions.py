@@ -1,3 +1,5 @@
+import requests
+
 def search_artist(artist_name, token):
     url = "https://api.spotify.com/v1/search"
     headers = {

@@ -13,4 +13,17 @@
 - [ ] Add instructions for how to obtain the Spotify API credentials and where to put them
 - [ ] Add instructions for how to run the code to replicate the results
 
+Research Question
+Does valence correlate with mean happiness in locations?
+
+Aim
+I want to see whether happy people listen to happy music! And explore 
+
+
+Plan
+1) Decide on which countries to investigate, based on happiness values (top 5, bottom 5, and median 5)
+2) Retrieve featured playlists based on the spoken language in the selected countries
+3) Combine the featured playlists with top 50 playlists for that area to maximize accuracy
+4) Retrieve the valence of every track in the dataset
+
 

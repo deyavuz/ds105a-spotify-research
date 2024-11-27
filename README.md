@@ -23,7 +23,33 @@ I want to see whether happy people listen to happy music! And explore
 Plan
 1) Decide on which countries to investigate, based on happiness values (top 5, bottom 5, and median 5)
 2) Retrieve featured playlists based on the spoken language in the selected countries
-3) Combine the featured playlists with top 50 playlists for that area to maximize accuracy
-4) Retrieve the valence of every track in the dataset
+3) Retrieve the valence of every track in the dataset
+4) Calculate average valence of every country and rank them from happiest to unhappiest, and then most valent to least valent
 
 
+How the most popular music genre has changed over the decades
+Change in danceability of top hits over the decades
+Change in valence of top hits over the decades
+Superstars: Were "top hits"/charts dominated by one/several superstars over the decades? 
+What makes a "pop girl" hit: an analysis of pop girl hit audio features, analysis, and Grammy predictions
+- decide on 5 pop girls
+    - what makes a pop girl?
+- get their top 10 songs
+    - what makes a pop girl song?
+    - compare to 5 non-pop non-girls
+        - are these features specific to pop girls or are they just trends?
+- get their audio features, specifically valence, danceability, loudness, speechiness
+- get their audio analysis
+- look at the pop girl grammy nominees of song of the year + pop solo performance:
+    - Beyonce Texas Hold Em
+    - SC Pls Pls Pls
+    - BE Birds
+    - Chappel Roan GLB
+    - TS Fortnight
+    +
+    - bey bodyguard
+    - espresso
+    - apple
+    - Birds
+    - GLB
+    

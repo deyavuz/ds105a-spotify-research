@@ -13,43 +13,28 @@
 - [ ] Add instructions for how to obtain the Spotify API credentials and where to put them
 - [ ] Add instructions for how to run the code to replicate the results
 
-Research Question
-Does valence correlate with mean happiness in locations?
+### Research Question
+What makes "main pop girl" music? What are its identifying qualities? How does it differ from other music (non-mainstream, non-pop, non-girl)?
 
-Aim
-I want to see whether happy people listen to happy music! And explore 
+### Aim
 
+I will also aim to make predictions for two of the categories of the upcoming Grammy Music Awards
 
-Plan
-1) Decide on which countries to investigate, based on happiness values (top 5, bottom 5, and median 5)
-2) Retrieve featured playlists based on the spoken language in the selected countries
-3) Retrieve the valence of every track in the dataset
-4) Calculate average valence of every country and rank them from happiest to unhappiest, and then most valent to least valent
+### Plan
+1) Obtain top hits from 2000-2024
+2) Obtain female pop/"main pop girl" tracks
+3) Get top 5 most frequent artist on both playlists
+4) Get these artists' top 5 tracks
+5) Create a database of these 20 songs
+6) Get the lyrics to to these songs and put them in a database
+7) Analyze these top 5 songs' lyrics to see whether they have any common themes
 
+### Table of Contents
+------
+| Notebook | Name | Content |
+---
+| 01 | Data Collection |  |
+| 02 | Data Processing |  |
+| 03 | Data Visualisation |  |
 
-How the most popular music genre has changed over the decades
-Change in danceability of top hits over the decades
-Change in valence of top hits over the decades
-Superstars: Were "top hits"/charts dominated by one/several superstars over the decades? 
-What makes a "pop girl" hit: an analysis of pop girl hit audio features, analysis, and Grammy predictions
-- decide on 5 pop girls
-    - what makes a pop girl?
-- get their top 10 songs
-    - what makes a pop girl song?
-    - compare to 5 non-pop non-girls
-        - are these features specific to pop girls or are they just trends?
-- get their audio features, specifically valence, danceability, loudness, speechiness
-- get their audio analysis
-- look at the pop girl grammy nominees of song of the year + pop solo performance:
-    - Beyonce Texas Hold Em
-    - SC Pls Pls Pls
-    - BE Birds
-    - Chappel Roan GLB
-    - TS Fortnight
-    +
-    - bey bodyguard
-    - espresso
-    - apple
-    - Birds
-    - GLB
-    
+### How to Run the Code

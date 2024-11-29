@@ -31,6 +31,7 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 
 | Table of Contents |
 | Notebook | Name | Content |
+| :--: | :--- | :--- |
 | 01 | Data Collection |  |
 | 02 | Data Processing |  |
 | 03 | Data Visualisation |  |

@@ -29,10 +29,8 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 6) Get the lyrics to to these songs and put them in a database
 7) Analyze these top 5 songs' lyrics to see whether they have any common themes
 
-### Table of Contents
-------
+| Table of Contents |
 | Notebook | Name | Content |
----
 | 01 | Data Collection |  |
 | 02 | Data Processing |  |
 | 03 | Data Visualisation |  |

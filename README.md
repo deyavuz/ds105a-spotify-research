@@ -30,7 +30,7 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 7) Analyze these top 5 songs' lyrics to see whether they have any common themes
 
 | Table of Contents |
-| Notebook | Name | Content |
+| NB | Name | Content |
 | :--: | :--- | :--- |
 | 01 | Data Collection |  |
 | 02 | Data Processing |  |

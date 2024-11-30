@@ -6,7 +6,7 @@
 **CANDIDATE NUMBER:** (THIS IS A 5-DIGIT NUMBER THAT LSE GIVES YOU EVERY YEAR. **DO NOT FORGET TO ADD THIS HERE.** IT IS IMPORTANT!)
 
 
-![Cover image, male vs. female lyrics in pop songs](../images/cover.webp)
+![Cover image, male vs. female lyrics in pop songs](../images/cover.png)
 
 - [ x ] Add a small little image here to illustrate this project
 - [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering

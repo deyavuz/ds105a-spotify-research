@@ -5,13 +5,18 @@
 
 **CANDIDATE NUMBER:** (THIS IS A 5-DIGIT NUMBER THAT LSE GIVES YOU EVERY YEAR. **DO NOT FORGET TO ADD THIS HERE.** IT IS IMPORTANT!)
 
-**\#TODO:**
 
-- [ ] Add a small little image here to illustrate this project
+![Cover image, male vs. female lyrics in pop songs](../images/cover.webp)
+
+- [ x ] Add a small little image here to illustrate this project
 - [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering
 - [ ] Add instructions for how to recreate the Python environment for this project (either with pyenv or conda)
 - [ ] Add instructions for how to obtain the Spotify API credentials and where to put them
 - [ ] Add instructions for how to run the code to replicate the results
+
+### Description
+
+
 
 ### Research Question
 What makes "main pop girl" music? What are its identifying qualities? How does it differ from other music (non-mainstream, non-pop, non-girl)?
@@ -36,4 +41,8 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 | 02 | Data Processing |  |
 | 03 | Data Visualisation |  |
 
-### How to Run the Code
+### How to recreate the Python environment
+
+### How to obtain Spotify credentials and where to put them
+
+### How to Run the Code to replicate the results

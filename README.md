@@ -38,7 +38,7 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 7) Get the lyrics to to these songs and put them in a database
 8) Analyze these top 10 songs' lyrics to see whether they have any common themes or differences
 
-| Table of Contents |
+### Table of Contents
 | NB | Name | Content |
 | :--: | :--- | :--- |
 | 01 | Data Collection |  |

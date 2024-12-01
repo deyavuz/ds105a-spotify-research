@@ -48,7 +48,16 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 ### How to recreate the Python environment
 
 
-### How to obtain Spotify credentials and where to put them
+### How to obtain Spotify and Genius credentials and where to put them
+To be able to run the code and obtain API data: 
+1) Create an account or login to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and [Genius API page](https://genius.com/api-clients)
+2) Create an app, name it (e.g., My App), describe it, and use the example Redirect URI link
+3) Click on your My App Home and navigate to settings
+4) Copy the Client ID and Client Secret 
+5) Create a .env file and store the credentials there (as CLINET_ID and CLIENT_SECRET)
+6) Install python-dotenv by running "pip install python-dotenv"
+7) Import the .env file by running "From dotenv Import load_dotenv"
+
 
 
 ### How to Run the Code to replicate the results

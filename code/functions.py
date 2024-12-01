@@ -2,7 +2,6 @@ import requests
 import pandas as pd
 import lyricsgenius
 from auth import *
-import sqlite3
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 import requests
@@ -10,31 +9,16 @@ from dotenv import load_dotenv
 from functions import *
 from bs4 import BeautifulSoup
 from pprint import pprint
-from auth import *
-import base64
-import os
-import pandas as pd
-import json
-import csv
-import string
-import lyricsgenius
-import sqlite3
 from sqlalchemy import create_engine
-import re
-from sklearn.feature_extraction.text import CountVectorizer
 import matplotlib.pyplot as plt
-#! pip install nltk
-import nltk
 from nltk.corpus import stopwords
 import seaborn as sns
-#! pip install wordcloud
-from os import path
 from PIL import Image
 import numpy as np
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 from matplotlib import colormaps as cm
-import cv2
 from scipy.interpolate import splprep, splev 
+from collections import Counter
 
 genius = lyricsgenius.Genius("access_token2")
 
@@ -163,32 +147,8 @@ def get_song_lyrics_with_first_word(song_title, artist_name):
         return f"No lyrics found for: {song_title} by {artist_name}"
 
 
-conn = sqlite3.connect('../data/spotify_data.db')  # Update with your actual database file
-cursor = conn.cursor()
+
 indices_to_refetch = [85, 86, 72, 68, 65, 49, 45, 41, 33, 31, 26, 8, 1]
-def refetch_lyrics_for_top_tracks():
-    for index in indices_to_refetch:
-        try:
-            # Get song title and artist from the database
-            cursor.execute("SELECT name, artist FROM top_tracks WHERE rowid = ?", (index,))
-            result = cursor.fetchone()
-            
-            if result:
-                song_title, artist_name = result
-                
-                # Call the function to get lyrics with the first word and artist name
-                new_lyrics = get_song_lyrics_with_first_word(song_title, artist_name)
-                
-                # Update the 'lyrics' column with the newly fetched lyrics in the database
-                cursor.execute("UPDATE top_tracks SET lyrics = ? WHERE rowid = ?", (new_lyrics, index))
-                conn.commit()  # Ensure changes are committed
-                print(f"Updated lyrics for song {song_title} by {artist_name} (rowid {index})")
-            else:
-                print(f"Song with rowid {index} not found in the database.")
-        
-        except Exception as e:
-            print(f"Error while updating row {index}: {e}")
-            conn.rollback()  # Rollback in case of error
 
 
 def preprocess_lyrics(lyrics):
@@ -206,16 +166,12 @@ def fetch_lyrics(row):
         print(f"Error fetching lyrics for {row['name']} by {row['artist']}: {e}")
         return None
     
-def get_most_frequent_words(df):
-    # Initialize CountVectorizer
-    vectorizer = CountVectorizer(stop_words='english', max_features=20)
-    # Fit and transform the lyrics column to get word counts
-    word_counts = vectorizer.fit_transform(df['cleaned_lyrics'])
-    # Get the words and their corresponding counts
-    word_freq = dict(zip(vectorizer.get_feature_names_out(), word_counts.sum(axis=0).A1))
-    return word_freq
+def get_most_frequent_words(text):
+    # Tokenize the input text into words
+    words = re.findall(r'\b\w+\b', text.lower())  # Extract words, ignoring punctuation
+    return dict(Counter(words))  # Return a dictionary of word frequencies
 
-words_to_remove = ['don', 'chorus', 'll', 'la', 'nicki', 'verse', 'pre', 'minaj', 'ayy', 'boom', 'oh', 'ain', 'ah', 'wanna', 'cause', 'like', 'yeah', 'ooh', 'rihanna', 'bout', 'rida', 'just', 'flo', 'got']
+words_to_remove = ['don', 'chorus', 'll', 'la', 'nicki', 'verse', 'pre', 'minaj', 'ayy', 'boom', 'oh', 'ain', 'ah', 'wanna', 'cause', 'like', 'yeah', 'ooh', 'rihanna', 'bout', 'rida', 'just', 'flo', 'got', 'feat', 'remix', 'em', 'badoom']
 def preprocess_lyrics_final(lyrics):
     # Create a regex pattern to match the words in the list
     pattern = r'\b(?:' + '|'.join(words_to_remove) + r')\b'
@@ -231,19 +187,20 @@ def preprocess_lyrics_final(lyrics):
     
     return lyrics
 
-def get_most_frequent_words_final(df):
-    # Use .loc to set the cleaned_lyrics column properly
-    df.loc[:, 'cleaned_lyrics'] = df['lyrics'].apply(preprocess_lyrics_final)
+def get_most_frequent_words_final(lyrics_list):
+    # Preprocess each lyric entry in the list
+    cleaned_lyrics = [preprocess_lyrics_final(lyric) for lyric in lyrics_list]
     
     # Initialize CountVectorizer
     vectorizer = CountVectorizer(stop_words='english', max_features=20)
     
-    # Fit and transform the lyrics column to get word counts
-    word_counts = vectorizer.fit_transform(df['cleaned_lyrics'])
+    # Fit and transform the lyrics to get word counts
+    word_counts = vectorizer.fit_transform(cleaned_lyrics)
     
     # Get the words and their corresponding counts
     word_freq = dict(zip(vectorizer.get_feature_names_out(), word_counts.sum(axis=0).A1))
     return word_freq
+
 
 def combine_artists(artist_column):
     # Check if 'feat' exists, and if so, split and merge artists

@@ -69,4 +69,4 @@ To be able to run the code and obtain API data:
 To run the code as intended (to replicate the results):
 1) Install the required dependencies by running `pip install -r requirements.txt`
 2) Activate the Python environment, as described above, by running `source venv/bin/activate`
-3) Run the Notebooks
+3) Run the Notebooks, starting from NB01, then NB02, and finally NB03

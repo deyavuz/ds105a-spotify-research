@@ -65,4 +65,8 @@ To be able to run the code and obtain API data:
 7) Import the .env file by running `From dotenv Import load_dotenv`
 8) Write a get_token() function in a separate file, auth.py, to streamline access token calling and using. Import the function through `From auth.py Import *` and utilize when calling endpoints
 
-### 🪗 How to Run the Code to replicate the results
+### 🪗 How to run the code to replicate the results
+To run the code as intended (to replicate the results):
+1) Install the required dependencies by running `pip install -r requirements.txt`
+2) Activate the Python environment, as described above, by running `source venv/bin/activate`
+3) Run the Notebooks

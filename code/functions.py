@@ -146,7 +146,7 @@ def get_song_lyrics_with_first_word(song_title, artist_name):
         return f"No lyrics found for: {song_title} by {artist_name}"
 
 
-indices_to_refetch = [85, 86, 72, 68, 65, 49, 45, 41, 33, 31, 26, 8, 0]
+indices_to_refetch = [85, 86, 72, 68, 65, 53, 49, 45, 41, 33, 31, 26, 8, 0]
 
 # Refetching lyrics for the top tracks that were not fetched successfully (see above)
 def refetch_lyrics_for_top_tracks(df, indices):
@@ -163,6 +163,14 @@ def refetch_lyrics_for_top_tracks(df, indices):
             print(f"Index {index} is out of range.")
     
     return df
+
+# Fetching lyrics and handling exceptions
+def safe_get_song_lyrics(row):
+    try:
+        return get_song_lyrics(row['name'], row['artist'])
+    except Exception as e:
+        print(f"Failed to fetch lyrics for {row['name']} by {row['artist']}: {e}")
+        return None  
 
 # Preprocessing the lyrics by removing non-alphabetic characters and converting them to lowercase
 def preprocess_lyrics(lyrics):
@@ -188,7 +196,7 @@ def get_most_frequent_words(text):
 
 # Here I created a list of "stop words" that I wanted to remove from the lyrics before visualising and analysing them
 # The main reason why these were removed was irrelevancy: they were either non-words like "boom" or "la", or lyric annotations such as "chorus" or "verse"
-words_to_remove = ['don', 'chorus', 'll', 'la', 'nicki', 'verse', 'pre', 'minaj', 'ayy', 'boom', 'oh', 'ain', 'ah', 'wanna', 'cause', 'like', 'yeah', 'ooh', 'rihanna', 'bout', 'rida', 'just', 'flo', 'got', 'feat', 'remix', 'em', 'badoom']
+words_to_remove = ['don', 'chorus', 'll', 'la', 'nicki', 'verse', 'pre', 'minaj', 'ayy', 'boom', 'oh', 'ain', 'ah', 'wanna', 'cause', 'like', 'yeah', 'ooh', 'rihanna', 'bout', 'rida', 'just', 'flo', 'got', 'feat', 'remix', 'em', 'badoom', 'outchea', 'prechorus']
 
 # Removing the stop words from the lyrics, alongside normalizing and standardizing them
 def preprocess_lyrics_final(lyrics):
@@ -199,6 +207,10 @@ def preprocess_lyrics_final(lyrics):
     lyrics = lyrics.lower()
     
     return lyrics
+
+# Clean both 'Track Name' and 'Artists' columns
+def clean_columns(df, columns):
+    return df.assign(**{col: df[col].str.strip().str.lower() for col in columns})
 
 # Fetching the most frequent words from the lyrics of the top tracks, where stop words and other noise is removed
 def get_most_frequent_words_final(lyrics_list):

@@ -10,7 +10,7 @@
 
 
 - [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering
-- [ ] Add instructions for how to recreate the Python environment for this project (either with pyenv or conda)
+
 - [ ] Add instructions for how to run the code to replicate the results
 
 ### Description
@@ -49,7 +49,10 @@ H1:
 | 03 | Data Visualisation |  |
 
 ### How to recreate the Python environment
-1) 
+1) Install pyenv through running `brew install pyenv` (for Mac) `or curl https://pyenv.run | bash` (for Linux)
+2) Install the required Python version by running `pyenv install 3.12.2` and then `pyenv local 3.12.2`
+3) To create and activate the virtual environment, run `python -m venv venv` and then `source venv/bin/activate` (for Mac/Linux) and `.\venv\Scripts\activate` (for Windows)
+4) Run pip install -r requirements.txt, where requirements.txt is a document containing all the required libraries (e.g., pandas) and the versions to be used
 
 ### How to obtain Spotify and Genius credentials and where to put them
 To be able to run the code and obtain API data: 
@@ -58,8 +61,8 @@ To be able to run the code and obtain API data:
 3) Click on your My App Home and navigate to settings
 4) Copy the Client ID and Client Secret 
 5) Create a .env file and store the credentials there (as CLINET_ID and CLIENT_SECRET)
-6) Install python-dotenv by running "pip install python-dotenv"
-7) Import the .env file by running "From dotenv Import load_dotenv"
-8) Write a get_token() function in a separate file, auth.py, to streamline access token calling and using. Import the function through "From auth.py Import *" and utilize when calling endpoints
+6) Install python-dotenv by running `pip install python-dotenv`
+7) Import the .env file by running `From dotenv Import load_dotenv`
+8) Write a get_token() function in a separate file, auth.py, to streamline access token calling and using. Import the function through `From auth.py Import *` and utilize when calling endpoints
 
 ### How to Run the Code to replicate the results

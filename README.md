@@ -37,8 +37,8 @@ H1:
 3) Combine these two playlists
 4) Get top 5 female and male artists (decided through how many of their songs feature on the playlists)
 5) Get these artists' top 10 tracks
-6) Create a database of these songs
-7) Get the lyrics to to these songs and put them in a database
+6) Create a table of these songs
+7) Get the lyrics to to these songs and put them in a table
 8) Analyze these top 10 songs' lyrics to see whether they have any common themes or differences
 
 ### Table of Contents

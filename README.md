@@ -57,7 +57,6 @@ To be able to run the code and obtain API data:
 5) Create a .env file and store the credentials there (as CLINET_ID and CLIENT_SECRET)
 6) Install python-dotenv by running "pip install python-dotenv"
 7) Import the .env file by running "From dotenv Import load_dotenv"
-
-
+8) Write a get_token() function in a separate file, auth.py, to streamline access token calling and using. Import the function through "From auth.py Import *" and utilize when calling endpoints
 
 ### How to Run the Code to replicate the results

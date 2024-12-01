@@ -11,22 +11,25 @@
 
 - [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering
 - [ ] Add instructions for how to recreate the Python environment for this project (either with pyenv or conda)
-- [ ] Add instructions for how to obtain the Spotify API credentials and where to put them
 - [ ] Add instructions for how to run the code to replicate the results
 
 ### Description
-This repository is a summative assignment for the class DS105: Data for Data Science. 
-
+This repository is a summative assignment for the class DS105: Data for Data Science. In summary, 
 
 Initially, my goal was to do an exploratory analysis of what defined "main pop girl" music - I wanted to get a list of top tracks by "main pop girls" such as Sabrina Carpenter, Chappel Roan, Olivia Rodrigo etc. and inspect their audio features. However, due to the deprecation of these endpoints in the Spotify API, I had to reformulate my research aim and question. 
 
+So, I ended up gathering data through two Spotify user-created playlists, "Pop Hits 2000s - 2024", to see which artists featured most over 2000-2024 in top pop hits tracks, and "girly pop songs", to diversify and reduce bias in the dataset, as due to recent API restrictions I can't use Spotify-created playlists and I wanted to get an unbiased, unopinionated sense of "top hits". So, I obtained data through two user-created playlists with different vibes/aesthetics.
+
+### Background/Literature Review
+
 
 ### Research Question
-What makes "main pop girl" music? What are its identifying qualities? How does it differ from other music (non-mainstream, non-pop, non-girl)?
+Do the lyrics of male/female 
 
-### Aim
-
-I will also aim to make predictions for two of the categories of the upcoming Grammy Music Awards
+### Hypothesis
+Based on my brief literature review, I am predicting that:
+H0: There won't be any differences in themes between top pop hits by male and female artists.
+H1: 
 
 ### Plan
 1) Obtain top hits from 2000-2024
@@ -46,7 +49,7 @@ I will also aim to make predictions for two of the categories of the upcoming Gr
 | 03 | Data Visualisation |  |
 
 ### How to recreate the Python environment
-
+1) 
 
 ### How to obtain Spotify and Genius credentials and where to put them
 To be able to run the code and obtain API data: 

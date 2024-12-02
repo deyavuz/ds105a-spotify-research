@@ -16,13 +16,17 @@ Initially, my goal was to do an exploratory analysis of what defined "main pop g
 So, I ended up gathering data through two Spotify user-created playlists, "Pop Hits 2000s - 2024", to see which artists featured most over 2000-2024 in top pop hits tracks, and "girly pop songs", to diversify and reduce bias in the dataset, as due to recent API restrictions I couldn't use Spotify-created playlists and I wanted to get an unbiased, unopinionated sense of "top hits". So, I obtained data through two user-created playlists with different vibes/aesthetics and focal time periods (pop hits with a wider time range and girly pop songs with a focus on contemporary pop).
 
 ### 🎻 Background/Literature Review
+[This extended abstract](https://comma.eecs.qmul.ac.uk/assets/pdf/vjosa_IC2S2_23.pdf) by Preniqi et al. (2023) suggests that love is a more common theme with female artists compared to male. Additionally, male artists are more likely to write and sing about sexist and gender biased topics, including descriptions of "vulgarity and dominance", especially post-90s (i.e., our dataset), while female artists tended to write on more self-introspective topics. The findings showed that female artists had more positive sentiments in their lyrics, while the negative sentiments were equal for both genders. The abstract did not expand upon compunded values, but it can be inferred that female artists had overall more positive sentiments in their lyrics. 
 
+[This exploratory analysis](https://www.storybench.org/analyzing-gender-differences-in-music-themes-and-lyrics/) by Samuel Chan found that male artists were more likely to use negative words and phrases when talking about their breakup/exes, while female artists used negative and positive words equally. 
+
+Looking at these two studies, I am predicting that women will have a higher (more positive) compounded sentiment, compared to male artists. 
 
 ### 🥁 Research Question
 Is there a difference between top pop hits by male and female musical artists?
 
 ### 🎹 Variables
-I have decided to operationalize "differences" in top pop hits by using the Genius API and supplementing my research by looking at song lyrics and performing sentiment analysis using Natural Language Toolkit (NLTK) and its built-in [VADER lexicon](https://github.com/cjhutto/vaderSentiment), which is great for such task because it is specialised in understanding social media-speak, which is prevalent in modern-day pop music. 
+I have decided to operationalize "differences" in top pop hits by using the Genius API and supplementing my research by looking at song lyrics and performing sentiment analysis using Natural Language Toolkit (NLTK) and its built-in [VADER lexicon](https://github.com/cjhutto/vaderSentiment), which is great for such task because it is specialised in understanding social media-speak and complex sentiments, which is prevalent in modern-day pop music. 
 
 So, my variables are as follows:
 
@@ -32,7 +36,7 @@ So, my variables are as follows:
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:
 **H0:** There won't be any differences in themes between top pop hits by male and female artists.
-**H1:** 
+**H1:** Songs by female musical artists will have higher positive sentiments, compared to songs by male artists.
 
 ### 🎵 Methodology
 1) Obtain top hits from 2000-2024

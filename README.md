@@ -5,12 +5,8 @@
 
 **CANDIDATE NUMBER:** 37492
 
-
 ![Cover image, male vs. female lyrics in pop songs](images/cover.jpg)
-
-
-- [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering
-
+Image credit: ChatGPT
 
 ### 🎸 Description
 This repository is a summative assignment for the class DS105: Data for Data Science. In summary, 
@@ -24,6 +20,12 @@ So, I ended up gathering data through two Spotify user-created playlists, "Pop H
 
 ### 🥁 Research Question
 Is there a difference between top pop hits by male and female musical artists?
+
+### 🎹 Variables
+I have decided to operationalize "differences" in top pop hits by using the Genius API and supplementing my research by looking at song lyrics. So my variables are as follows:
+
+Independent variable: Song lyrics of top 10 songs of top artists
+Dependent variables: Themes/patterns present in lyrics
 
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:

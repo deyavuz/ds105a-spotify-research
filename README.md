@@ -53,9 +53,9 @@ Based on my brief literature review, I am predicting that:
 ### 🎷 Table of Contents
 | NB | Name | Content |
 | :--: | :--- | :--- |
-| 01 | [Data Collection](../code/NB01-Data-Collection.ipynb) |  |
-| 02 | [Data Processing](../code/NB02-Data-Processing.ipynb) |  |
-| 03 | [Data Visualisation](../code/NB03-Data-Visualisation.ipynb) |  |
+| 01 | [Data Collection](code/NB01-Data-Collection.ipynb) |  |
+| 02 | [Data Processing](code/NB02-Data-Processing.ipynb) |  |
+| 03 | [Data Visualisation](code/NB03-Data-Visualisation.ipynb) |  |
 
 ### 🪕 How to recreate the Python environment
 1) Install pyenv through running `brew install pyenv` (for Mac) `or curl https://pyenv.run | bash` (for Linux)

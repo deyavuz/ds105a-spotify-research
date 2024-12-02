@@ -11,7 +11,6 @@
 
 - [ ] Add a brief description of what this repository is about, what you wanted to discover when you started it and what you ended up doing/discovering
 
-- [ ] Add instructions for how to run the code to replicate the results
 
 ### 🎸 Description
 This repository is a summative assignment for the class DS105: Data for Data Science. In summary, 
@@ -34,12 +33,13 @@ H1:
 ### 🎵 Plan
 1) Obtain top hits from 2000-2024
 2) Obtain girly pop/"main pop girl" tracks
-3) Combine these two playlists
+3) Combine these two playlists, create a dataframe
 4) Get top 5 female and male artists (decided through how many of their songs feature on the playlists)
 5) Get these artists' top 10 tracks
-6) Create a table of these songs
-7) Get the lyrics to to these songs and put them in a table
-8) Analyze these top 10 songs' lyrics to see whether they have any common themes or differences
+6) Create a dataframe of these songs
+7) Get the lyrics to to these songs and add them to the dataframe
+8) Create a SQL database, with the foreign key "Artists"
+9) Analyze these songs' lyrics to see whether they have any common themes or differences
 
 ### 🎷 Table of Contents
 | NB | Name | Content |

@@ -3,7 +3,7 @@
 
 **AUTHOR:** Defne Ece Yavuz
 
-**CANDIDATE NUMBER:** (THIS IS A 5-DIGIT NUMBER THAT LSE GIVES YOU EVERY YEAR. **DO NOT FORGET TO ADD THIS HERE.** IT IS IMPORTANT!)
+**CANDIDATE NUMBER:** 37492
 
 
 ![Cover image, male vs. female lyrics in pop songs](images/cover.jpg)

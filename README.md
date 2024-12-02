@@ -36,7 +36,7 @@ So, my variables are as follows:
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:
 **H0:** There won't be any differences in themes between top pop hits by male and female artists.
-**H1:** Songs by female musical artists will have higher positive sentiments, compared to songs by male artists.
+**H1:** Songs by female musical artists will have a higher compounded sentiment (indicating an overall more positive sentiment), compared to songs by male artists.
 
 ### 🎵 Methodology
 1) Obtain top hits from 2000-2024

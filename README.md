@@ -24,7 +24,7 @@ So, I ended up gathering data through two Spotify user-created playlists, "Pop H
 
 
 ### 🥁 Research Question
-Do the lyrics of male/female 
+Is there a difference between top pop hits by male and female musical artists?
 
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:
@@ -44,9 +44,9 @@ H1:
 ### 🎷 Table of Contents
 | NB | Name | Content |
 | :--: | :--- | :--- |
-| 01 | Data Collection |  |
-| 02 | Data Processing |  |
-| 03 | Data Visualisation |  |
+| 01 | [Data Collection]() |  |
+| 02 | [Data Processing]() |  |
+| 03 | [Data Visualisation]() |  |
 
 ### 🪕 How to recreate the Python environment
 1) Install pyenv through running `brew install pyenv` (for Mac) `or curl https://pyenv.run | bash` (for Linux)

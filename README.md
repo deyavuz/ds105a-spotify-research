@@ -9,11 +9,11 @@
 Image credit: ChatGPT
 
 ### 🎸 Description
-This repository is a summative assignment for the class DS105: Data for Data Science. In summary, 
+This repository is a summative assignment for the class DS105: Data for Data Science. Through this repository, I will be using data gathered mainly through the Spotify API, and supplemented by the Genius API, to investigate how pop songs by male vs. female musical artists differ.
 
 Initially, my goal was to do an exploratory analysis of what defined "main pop girl" music - I wanted to get a list of top tracks by "main pop girls" such as Sabrina Carpenter, Chappel Roan, Olivia Rodrigo etc. and inspect their audio features. However, due to the deprecation of these endpoints in the Spotify API, I had to reformulate my research aim and question. 
 
-So, I ended up gathering data through two Spotify user-created playlists, "Pop Hits 2000s - 2024", to see which artists featured most over 2000-2024 in top pop hits tracks, and "girly pop songs", to diversify and reduce bias in the dataset, as due to recent API restrictions I can't use Spotify-created playlists and I wanted to get an unbiased, unopinionated sense of "top hits". So, I obtained data through two user-created playlists with different vibes/aesthetics.
+So, I ended up gathering data through two Spotify user-created playlists, "Pop Hits 2000s - 2024", to see which artists featured most over 2000-2024 in top pop hits tracks, and "girly pop songs", to diversify and reduce bias in the dataset, as due to recent API restrictions I couldn't use Spotify-created playlists and I wanted to get an unbiased, unopinionated sense of "top hits". So, I obtained data through two user-created playlists with different vibes/aesthetics and focal time periods (pop hits with a wider time range and girly pop songs with a focus on contemporary pop).
 
 ### 🎻 Background/Literature Review
 
@@ -22,17 +22,19 @@ So, I ended up gathering data through two Spotify user-created playlists, "Pop H
 Is there a difference between top pop hits by male and female musical artists?
 
 ### 🎹 Variables
-I have decided to operationalize "differences" in top pop hits by using the Genius API and supplementing my research by looking at song lyrics. So my variables are as follows:
+I have decided to operationalize "differences" in top pop hits by using the Genius API and supplementing my research by looking at song lyrics and performing sentiment analysis using Natural Language Toolkit (NLTK) and its built-in [VADER lexicon](https://github.com/cjhutto/vaderSentiment), which is great for such task because it is specialised in understanding social media-speak, which is prevalent in modern-day pop music. 
 
-Independent variable: Song lyrics of top 10 songs of top artists
-Dependent variables: Themes/patterns present in lyrics
+So, my variables are as follows:
+
+**Independent variable:** Song lyrics of top 10 songs of top artists
+**Dependent variables:** Lyrics sentiment compound values (from -1 to 1)
 
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:
 H0: There won't be any differences in themes between top pop hits by male and female artists.
 H1: 
 
-### 🎵 Plan
+### 🎵 Methodology
 1) Obtain top hits from 2000-2024
 2) Obtain girly pop/"main pop girl" tracks
 3) Combine these two playlists, create a dataframe
@@ -41,7 +43,8 @@ H1:
 6) Create a dataframe of these songs
 7) Get the lyrics to to these songs and add them to the dataframe
 8) Create a SQL database, with the foreign key "Artists"
-9) Analyze these songs' lyrics to see whether they have any common themes or differences
+9) Analyze these songs' lyrics through sentiment analysis to see their sentiments
+10) Compare the genders' lyrical sentiments and plot them!
 
 ### 🎷 Table of Contents
 | NB | Name | Content |

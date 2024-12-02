@@ -31,8 +31,8 @@ So, my variables are as follows:
 
 ### 🎺 Hypothesis
 Based on my brief literature review, I am predicting that:
-H0: There won't be any differences in themes between top pop hits by male and female artists.
-H1: 
+**H0:** There won't be any differences in themes between top pop hits by male and female artists.
+**H1:** 
 
 ### 🎵 Methodology
 1) Obtain top hits from 2000-2024
@@ -64,8 +64,8 @@ To be able to run the code and obtain API data:
 1) Create an account or login to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and [Genius API page](https://genius.com/api-clients)
 2) Create an app, name it (e.g., My App), describe it, and use the example Redirect URI link
 3) Click on your My App Home and navigate to settings
-4) Copy the Client ID and Client Secret 
-5) Create a .env file and store the credentials there (as CLINET_ID and CLIENT_SECRET)
+4) Copy the **Client ID** and **Client Secret**
+5) Create a .env file and store the credentials there (as **CLINET_ID** and **CLIENT_SECRET**) - these should always be hidden, so do not push onto Git or share publicly
 6) Install python-dotenv by running `pip install python-dotenv`
 7) Import the .env file by running `From dotenv Import load_dotenv`
 8) Write a get_token() function in a separate file, auth.py, to streamline access token calling and using. Import the function through `From auth.py Import *` and utilize when calling endpoints

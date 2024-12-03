@@ -4,6 +4,39 @@
             "track": {
                 "artists": [
                     {
+                        "name": "Hozier"
+                    }
+                ],
+                "name": "Take Me To Church",
+                "id": "3dYD57lRAUcMHufyqn9GcI"
+            }
+        },
+        {
+            "track": {
+                "artists": [
+                    {
+                        "name": "Taylor Swift"
+                    }
+                ],
+                "name": "I Knew You Were Trouble.",
+                "id": "6FB3v4YcR57y4tXFcdxI1E"
+            }
+        },
+        {
+            "track": {
+                "artists": [
+                    {
+                        "name": "One Direction"
+                    }
+                ],
+                "name": "Live While We're Young",
+                "id": "6Vh03bkEfXqekWp7Y1UBRb"
+            }
+        },
+        {
+            "track": {
+                "artists": [
+                    {
                         "name": "The Kid LAROI"
                     },
                     {
@@ -862,6 +895,17 @@
                 ],
                 "name": "Stockholm",
                 "id": "198asGCZWwoQVdLxYSlPTx"
+            }
+        },
+        {
+            "track": {
+                "artists": [
+                    {
+                        "name": "Samy Omari"
+                    }
+                ],
+                "name": "POY (Point of You)",
+                "id": "1PCJLKibpFnXhuwXvg8fsE"
             }
         },
         {

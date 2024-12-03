@@ -53,9 +53,9 @@ Based on my brief literature review, I am predicting that:
 ### 🎷 Table of Contents
 | NB | Name | Content |
 | :--: | :--- | :--- |
-| 01 | [Data Collection](code/NB01-Data-Collection.ipynb) |  |
-| 02 | [Data Processing](code/NB02-Data-Processing.ipynb) |  |
-| 03 | [Data Visualisation](code/NB03-Data-Visualisation.ipynb) |  |
+| 01 | [Data Collection](code/NB01-Data-Collection.ipynb) | Collecting playlist data from two Spotify user-created playlists |
+| 02 | [Data Processing](code/NB02-Data-Processing.ipynb) | Processing this data, retrieving artist and lyrics data from the Genius API, creating an SQL database |
+| 03 | [Data Visualisation](code/NB03-Data-Visualisation.ipynb) | Plotting my data as bar graphs and word clouds |
 
 ### 🪕 How to recreate the Python environment
 1) Install pyenv through running `brew install pyenv` (for Mac) `or curl https://pyenv.run | bash` (for Linux)
@@ -79,3 +79,6 @@ To run the code as intended (to replicate the results):
 1) Install the required dependencies by running `pip install -r requirements.txt`
 2) Activate the Python environment, as described above, by running `source venv/bin/activate`
 3) Run the Notebooks, starting from NB01, then NB02, and finally NB03
+
+### 🤖 Use of AI Chatbot ChatGPT
+I used ChatGPT as a resource to help me work through complex problems when I got stuck. You can access my conversation with the chatbot [here](https://chatgpt.com/share/674f266c-e398-8003-b138-2691cd4b9a9c)!

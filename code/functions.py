@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import lyricsgenius
+import json
 from auth import *
 import re
 from sklearn.feature_extraction.text import CountVectorizer
@@ -22,6 +23,7 @@ from collections import Counter
 
 genius = lyricsgenius.Genius("access_token2")
 
+# Test Functions (NB01):
 # Returns an artist's ID, name, popularity, etc.
 def search_artist(artist_name, token):
     url = "https://api.spotify.com/v1/search"
@@ -52,19 +54,6 @@ def get_playlist_items(playlist_id, fields, market, limit, offset, access_token)
 
     response = requests.get(url, headers=headers, params=params)
     return response.json()
-
-# Returns an artist's top 10 tracks
-def get_top_tracks(artist_id, token):
-    url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks"
-    headers = {
-        "Authorization": f"Bearer {token}"
-    }
-    params = {
-        "market": "US"
-    }
-    
-    response = requests.get(url, headers=headers, params=params)
-    return response.json()  
 
 # Returns the URL of a song page on Genius, used to fetch lyrics in function get_song_lyrics
 def search_song(query, token):
@@ -104,7 +93,80 @@ def get_song_lyrics(song_title, artist_name):
     except Exception as e:
         
         return f"Error fetching lyrics for '{song_title}' by {artist_name}: {e}"
+
+# Data Collection (NB02):
+# Cleans playlist data by normalizing and renaming columns
+def clean_playlist(data_path):
+    with open(data_path, 'r') as f:
+        data = json.load(f)
+    tracks = pd.json_normalize(data['items'])
     
+    # Selecting and renaming relevant columns
+    tracks = tracks[['track.name', 'track.id', 'track.artists']].rename(
+        columns={'track.name': 'Track Name', 'track.id': 'Track ID', 'track.artists': 'Artists'}
+    )
+    
+    # Processing Artists column
+    tracks['Artists'] = tracks['Artists'].apply(
+        lambda x: ", ".join(artist['name'] for artist in x)
+    )
+    tracks['Artists'] = tracks['Artists'].str.lower().str.strip().apply(combine_artists)
+    tracks['Artist Count'] = tracks['Artists'].apply(lambda x: len(set(x.split(','))))
+    
+    # Normalizing Track Name and split Artists
+    tracks['Track Name'] = tracks['Track Name']\
+        .str.lower()\
+        .str.strip()\
+        .str.replace(r'[^\w\s]', '', regex=True)  # Clean up track names directly
+    
+    # Exploding the Artists column
+    tracks = (
+        tracks.drop_duplicates()
+        .assign(Artists=lambda df: df['Artists'].str.split(', '))
+        .explode('Artists')
+        .assign(Artists=lambda df: df['Artists'].str.strip().astype('category'))
+    )
+    
+    return tracks
+
+# Returns an artist's top 10 tracks
+def get_top_tracks(artist_id, token):
+    url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks"
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+    params = {
+        "market": "US"
+    }
+    
+    response = requests.get(url, headers=headers, params=params)
+    return response.json()  
+
+# Fetches lyrics
+def fetch_lyrics(row):
+    try:
+        lyrics = get_song_lyrics(row['name'], row['artist'])
+        if lyrics:
+            return lyrics
+        else:
+            print(f"Lyrics for {row['name']} by {row['artist']} not found using standard search.")
+            
+            lyrics = get_song_lyrics_with_variations(row['name'], row['artist'])
+            if lyrics:
+                return lyrics
+            else:
+                print(f"Lyrics for {row['name']} by {row['artist']} not found using variations.")
+                
+                lyrics = get_song_lyrics_with_first_word(row['name'], row['artist'])
+                if lyrics:
+                    return lyrics
+                else:
+                    print(f"Lyrics for {row['name']} by {row['artist']} not found using first word method.")
+                    return None
+    except Exception as e:
+        print(f"Error fetching lyrics for {row['name']} by {row['artist']}: {e}")
+        return None
+
 # Searches for songs on Genius, using different variations of the song title and artist name
 # To ensure lyrics are found, despite not using the exact song title or artist name    
 def get_song_lyrics_with_variations(song_title, artist_name):
@@ -146,7 +208,7 @@ def get_song_lyrics_with_first_word(song_title, artist_name):
         return f"No lyrics found for: {song_title} by {artist_name}"
 
 
-indices_to_refetch = [85, 86, 72, 68, 65, 53, 49, 45, 41, 33, 31, 26, 8, 0]
+indices = [85, 86, 72, 68, 65, 53, 49, 45, 41, 33, 31, 26, 8, 0]
 
 # Refetching lyrics for the top tracks that were not fetched successfully (see above)
 def refetch_lyrics_for_top_tracks(df, indices):
@@ -164,13 +226,22 @@ def refetch_lyrics_for_top_tracks(df, indices):
     
     return df
 
-# Fetching lyrics and handling exceptions
-def safe_get_song_lyrics(row):
-    try:
-        return get_song_lyrics(row['name'], row['artist'])
-    except Exception as e:
-        print(f"Failed to fetch lyrics for {row['name']} by {row['artist']}: {e}")
-        return None  
+# Refetching lyrics for the top tracks by name and artist
+def refetch_lyrics_for_top_tracks_by_name(df, song_artist_list):
+    for song_title, artist_name in song_artist_list:
+        row_index = df[
+            (df['name'] == song_title) & (df['artist'] == artist_name)
+        ].index
+        
+        if not row_index.empty:
+            new_lyrics = get_song_lyrics_with_first_word(song_title, artist_name)
+            
+            df.at[row_index[0], 'lyrics'] = new_lyrics
+            print(f"Lyrics updated for: {song_title} by {artist_name}")
+        else:
+            print(f"Song '{song_title}' by {artist_name} not found in the dataframe.")
+    
+    return df
 
 # Preprocessing the lyrics by removing non-alphabetic characters and converting them to lowercase
 def preprocess_lyrics(lyrics):
@@ -179,14 +250,6 @@ def preprocess_lyrics(lyrics):
    
     lyrics = lyrics.lower()
     return lyrics
-
-# Fetching lyrics
-def fetch_lyrics(row):
-    try:
-        return get_song_lyrics(row['name'], row['artist'])
-    except Exception as e:
-        print(f"Error fetching lyrics for {row['name']} by {row['artist']}: {e}")
-        return None
     
 # Fetching the most frequent words from the lyrics of the top tracks    
 def get_most_frequent_words(text):
@@ -208,7 +271,7 @@ def preprocess_lyrics_final(lyrics):
     
     return lyrics
 
-# Clean both 'Track Name' and 'Artists' columns
+# Cleaning both 'Track Name' and 'Artists' columns
 def clean_columns(df, columns):
     return df.assign(**{col: df[col].str.strip().str.lower() for col in columns})
 
@@ -250,11 +313,13 @@ def plot_word_frequencies(male_word_freq, female_word_freq, top_n=10):
     plt.figure(figsize=(10, 6))
     sns.barplot(x='count', y='word', hue='gender', data=combined_df, palette='muted')
     
-    plt.title('Top 10 Most Frequent Words in Lyrics (Male vs Female Artists)', fontsize=16)
+    plt.title('Figure 2. Top 10 Most Frequent Words in Lyrics (Male vs Female Artists)', fontsize=16)
     plt.xlabel('Word Frequency', fontsize=12)
     plt.ylabel('Word', fontsize=12)
     plt.show()
 
+
+# Word Cloud Plots:
 # Plotting a word cloud with the given word frequency
 def plot_word_cloud(word_freq, title="Word Cloud", save_path=None):
     

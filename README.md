@@ -31,6 +31,7 @@ I have decided to operationalize "differences" in top pop hits by using the Geni
 So, my variables are as follows:
 
 **Independent variable:** Song lyrics of top 10 songs of top artists
+
 **Dependent variables:** Lyrics sentiment compound values (from -1 to 1)
 
 ### 🎺 Hypothesis

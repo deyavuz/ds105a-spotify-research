@@ -3,8 +3,6 @@
 
 **AUTHOR:** Defne Ece Yavuz
 
-**CANDIDATE NUMBER:** 37492
-
 ![Cover image, male vs. female lyrics in pop songs](images/cover.jpg)
 Image credit: ChatGPT
 
